@@ -1,0 +1,22 @@
+{
+  "name": "streamdataio-console",
+  "version": "1.0.0",
+  "description": "Sample with web console of the Streamdata.io Javascript SDK",
+  "keywords": [
+    "streamdata",
+    "streamdata.io",
+    "push",
+    "sse",
+    "server-sent-event",
+    "api",
+    "streaming"
+  ],
+  "author": "Streamdataio support@streamdata.io",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "fast-json-patch": "^2.0.3"
+  },
+  "devDependencies": {
+    "eventsource": "^1.0.4"
+  }
+}

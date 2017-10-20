@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Streamdataio Demo</title>
+  </head>
+  <body>
+    <h1>Hello! Open the web console of your browser to see the results!</h1>
+    <script src="streamdataio.min.js"></script>
+    <script src="node_modules/fast-json-patch/dist/fast-json-patch.js"></script>
+
+    <script>
+      var token = "YmVjYWI0MDYtMjdmZC00MWVlLTg0NzAtMjgzYmEwMTUyNjMw";
+      var url = "http://stockmarket.streamdata.io/prices";
+      var headers = [];
+
+      // If ever you wish to get the whole data instead of patches:
+      // headers = ["Accept: application/json"];
+
+      var eventSource = streamdataio.createEventSource(url, token, headers);
+      var result = [];
+
+      eventSource.onData(function(data) {
+        // initialize your data with the initial snapshot
+        console.log('--------------- on data ---------------');
+        // console.log('data: %o', data);
+        console.table(data);
+        result = data;
+        console.log('--------------- end on data ---------------');
+
+      }).onPatch(function(patch){
+        // update the data with the provided patch
+        console.log('--------------- on patch ---------------');
+        console.log('patch: %o', patch);
+        console.table(patch);
+
+        jsonpatch.applyPatch(result, patch);
+
+        console.log('result patched:');
+        console.table(result);
+        console.log('--------------- end on patch ---------------');
+
+      }).onError(function(error){
+        // do whatever you need in case of error
+        console.log('error: %o', error);
+        eventSource.close();
+
+      }).onOpen(function(){
+        // you can also add custom behavior when the stream is opened
+        console.log('open');
+      });
+
+      eventSource.open();
+    </script>
+  </body>
+</html>

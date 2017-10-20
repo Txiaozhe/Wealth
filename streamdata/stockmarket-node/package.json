@@ -1,0 +1,17 @@
+{
+  "name": "streamdata",
+  "version": "1.0.0",
+  "description": "Simple node.js app using streamdata.io",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wangriyu",
+  "dependencies": {
+    "fast-json-patch": "^2.0.3",
+    "node-print": "0.0.4",
+    "streamdataio-js-sdk": "1.0.5",
+    "streamdataio-js-sdk-auth": "1.0.1"
+  }
+}

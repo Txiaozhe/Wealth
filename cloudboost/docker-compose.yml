@@ -1,0 +1,27 @@
+mongo:
+  image: 'mongo:3.4'
+  ports:
+    - '27017:27017'
+  restart: always
+  volumes:
+    - '/var/lib/mongodb:/var/lib/mongodb'
+redis:
+  image: 'redis:3.0'
+  ports:
+    - '6379:6379'
+    - '16379:16379'
+    - '26379:26379'
+  restart: always
+api:
+  environment:
+    - "MAIL_PROVIDER= '<mail provider name>'"
+    - "MAIL_PROVIDER_API_KEY= '<mail provider's api/auth key>'"
+    - "DOMAIN= '<mail domain>'"
+    - "FROM_EMAIL= '<email's from email>'"
+    - "FROM_NAME= '<email's from name>'"
+  image: 'cloudboost/cloudboost:latest'
+  links:
+    - mongo
+    - redis
+  ports:
+    - '4730:4730'
