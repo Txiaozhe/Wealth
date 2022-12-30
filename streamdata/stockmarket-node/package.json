@@ -9,7 +9,7 @@
   },
   "author": "wangriyu",
   "dependencies": {
-    "fast-json-patch": "^2.0.3",
+    "fast-json-patch": "^3.1.1",
     "node-print": "0.0.4",
     "streamdataio-js-sdk": "1.0.5",
     "streamdataio-js-sdk-auth": "1.0.1"
